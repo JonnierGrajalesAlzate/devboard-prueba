@@ -21,12 +21,10 @@ Mini gestor de proyectos y tareas desarrollado con React, Node.js, Express y Pos
 Desde terminal
 
 ### Frontend
-npm install
-npm run dev
+npm install / npm run dev
 
 ### Backend
-npm install
-npm run dev
+npm install / npm run dev
 
 ## Variables de entorno PostgreSQL
 
@@ -41,3 +39,15 @@ Ejecutar:
 
 backend/bd/schema.sql
 backend/bd/seed.sql
+
+## Dashboard Principal
+
+![Dashboard](./assets/ScreenShot1.png)
+
+---
+
+## Gestión de Tareas
+
+![Tasks](./assets/screenShot2.png)
+
+---
