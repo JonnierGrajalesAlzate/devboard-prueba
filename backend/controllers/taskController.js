@@ -15,10 +15,15 @@ export const getTasks = async (req, res) => {
     try {
 
         const result = await pool.query(`
-            SELECT *
-            FROM tasks
-            ORDER BY created_at DESC
-        `);
+    SELECT
+        tasks.*,
+        categories.name AS category_name,
+        categories.color AS category_color
+    FROM tasks
+    LEFT JOIN categories
+    ON tasks.category_id = categories.id
+    ORDER BY tasks.created_at DESC
+`);
 
         res.status(200).json(result.rows);
 
