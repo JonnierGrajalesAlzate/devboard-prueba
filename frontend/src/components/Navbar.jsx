@@ -17,12 +17,7 @@ const Navbar = () => {
                
 
                 </div>
-
-                {/* STATUS */}
-                <div className="flex items-center gap-2 bg-slate-900 px-4 py-2 rounded-full">
-                    <div className="w-2.5 h-2.5 bg-green-400 rounded-full animate-pulse"></div>
-                    <span className="text-sm text-slate-300">Live</span>
-                </div>
+  
 
             </div>
 

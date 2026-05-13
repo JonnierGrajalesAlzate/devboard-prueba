@@ -1,4 +1,8 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
+
+import {
+    getCategories
+} from "../services/categoryService";
 
 const TaskForm = ({
     onSubmit,
@@ -7,16 +11,52 @@ const TaskForm = ({
 }) => {
 
     const [title, setTitle] = useState("");
+
     const [description, setDescription] = useState("");
+
     const [status, setStatus] = useState("pending");
+
+    const [categoryId, setCategoryId] = useState("");
+
+    const [categories, setCategories] = useState([]);
+
+    useEffect(() => {
+
+        const fetchCategories = async () => {
+
+            try {
+
+                const data = await getCategories();
+
+                setCategories(data);
+
+            } catch (error) {
+
+                console.log(error);
+
+            }
+
+        };
+
+        fetchCategories();
+
+    }, []);
 
     useEffect(() => {
 
         if(editingTask){
 
             setTitle(editingTask.title);
-            setDescription(editingTask.description || "");
+
+            setDescription(
+                editingTask.description || ""
+            );
+
             setStatus(editingTask.status);
+
+            setCategoryId(
+                editingTask.category_id || ""
+            );
 
         }
 
@@ -35,12 +75,17 @@ const TaskForm = ({
         onSubmit({
             title,
             description,
-            status
+            status,
+            category_id: categoryId || null
         });
 
         setTitle("");
+
         setDescription("");
+
         setStatus("pending");
+
+        setCategoryId("");
 
     };
 
@@ -57,49 +102,82 @@ const TaskForm = ({
 
                     {
                         editingTask
-                        ? "Edit Task"
-                        : "Create Task"
+                        ? "Editar Tarea"
+                        : "Crear Tarea"
                     }
 
                 </h2>
 
             </div>
 
-            <div className="grid md:grid-cols-3 gap-4">
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
 
                 <input
                     type="text"
-                    placeholder="Task title"
+                    placeholder="Titulo tarea"
                     value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    onChange={(e) =>
+                        setTitle(e.target.value)
+                    }
                     className="border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-slate-800"
                 />
 
                 <input
                     type="text"
-                    placeholder="Description"
+                    placeholder="Descripcion"
                     value={description}
-                    onChange={(e) => setDescription(e.target.value)}
+                    onChange={(e) =>
+                        setDescription(e.target.value)
+                    }
                     className="border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-slate-800"
                 />
 
                 <select
                     value={status}
-                    onChange={(e) => setStatus(e.target.value)}
+                    onChange={(e) =>
+                        setStatus(e.target.value)
+                    }
                     className="border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-slate-800"
                 >
 
                     <option value="pending">
-                        Pending
+                        Pendiente
                     </option>
 
                     <option value="in_progress">
-                        In Progress
+                        En proceso
                     </option>
 
                     <option value="completed">
-                        Completed
+                        Completado
                     </option>
+
+                </select>
+
+                <select
+                    value={categoryId}
+                    onChange={(e) =>
+                        setCategoryId(e.target.value)
+                    }
+                    className="border border-slate-300 rounded-xl px-4 py-3 outline-none focus:ring-2 focus:ring-slate-800"
+                >
+
+                    <option value="">
+                        Seleccionar Categoria
+                    </option>
+
+                    {
+                        categories.map((category) => (
+
+                            <option
+                                key={category.id}
+                                value={category.id}
+                            >
+                                {category.name}
+                            </option>
+
+                        ))
+                    }
 
                 </select>
 
@@ -113,14 +191,15 @@ const TaskForm = ({
 
                     {
                         editingTask
-                        ? "Update Task"
-                        : "Create Task"
+                        ? "Actualizar Tarea"
+                        : "Crear Tarea"
                     }
 
                 </button>
 
                 {
                     editingTask && (
+
                         <button
                             type="button"
                             onClick={cancelEdit}
@@ -128,6 +207,7 @@ const TaskForm = ({
                         >
                             Cancel
                         </button>
+
                     )
                 }
 
