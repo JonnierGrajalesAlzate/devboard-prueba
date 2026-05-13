@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-
+import TaskSkeleton from "../components/TaskSkeleton";
 import Navbar from "../components/Navbar";
 import TaskCard from "../components/TaskCard";
 import TaskForm from "../components/TaskForm";
@@ -274,14 +274,22 @@ const Home = () => {
                 </div>
 
                 {
-                    loading
-                    ? (
-                        <div className="flex justify-center py-20">
+    loading
+    ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
 
-                            <div className="w-14 h-14 border-4 border-slate-300 border-t-slate-900 rounded-full animate-spin"></div>
+            {
+                Array.from({ length: 6 }).map((_, index) => (
 
-                        </div>
-                    )
+                    <TaskSkeleton
+                        key={index}
+                    />
+
+                ))
+            }
+
+        </div>
+    )
                     : (
                         <>
                         
