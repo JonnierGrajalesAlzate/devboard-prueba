@@ -17,26 +17,7 @@ Mini gestor de proyectos y tareas desarrollado con React, Node.js, Express y Pos
 - Paginación
 - Skeleton loaders
 
-## Instalación
-Se necesitan de 2 terminales Desde de VSCODE corriendo en simultaneo
-
-* 1ra terminal:
-  
-cd fronted
-
-npm install 
-
-npm run dev
-
-* 2da terminal:
-
-cd backend 
-
-npm install 
-
-npm run dev
-
-## Variables de entorno
+## Variables de entorno abre el proyecto desde VSCODE
 se necesita crear en la raiz de la carpeta backend un archivo .env en el cual deberas de poner la configuracion de tu PostgreSQL
 
 PORT=3000
@@ -64,6 +45,27 @@ backend/bd/schema.sql
 backend/bd/seed.sql
 
 ejecutar.
+
+## Instalación / Correr APP
+Se necesitan de 2 terminales Desde de VSCODE corriendo en simultaneo
+
+* 1ra terminal:
+  
+cd fronted
+
+npm install 
+
+npm run dev
+
+* 2da terminal:
+
+cd backend 
+
+npm install 
+
+npm run dev
+
+mirar pagina: http://localhost:5173/
 
 ## Dashboard Principal
 
