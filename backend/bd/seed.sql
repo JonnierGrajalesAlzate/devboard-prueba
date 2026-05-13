@@ -23,7 +23,7 @@ VALUES
     'Agregar responsive design',
     'completed',
     3
-);
+),
 (
     'Diseñar dashboard principal',
     'Crear interfaz moderna para el panel principal',
@@ -82,4 +82,4 @@ VALUES
     'Implementar eliminación de tareas',
     'Permitir borrar tareas con confirmación',
     'completed',
-    2),
+    2);

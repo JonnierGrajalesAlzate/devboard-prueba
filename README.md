@@ -18,27 +18,52 @@ Mini gestor de proyectos y tareas desarrollado con React, Node.js, Express y Pos
 - Skeleton loaders
 
 ## Instalación
-Desde terminal
+Se necesitan de 2 terminales Desde de VSCODE corriendo en simultaneo
 
-### Frontend
-npm install / npm run dev
+* 1ra terminal:
+  
+cd fronted
 
-### Backend
-npm install / npm run dev
+npm install 
 
-## Variables de entorno PostgreSQL
+npm run dev
+
+* 2da terminal:
+
+cd backend 
+
+npm install 
+
+npm run dev
+
+## Variables de entorno
+se necesita crear en la raiz de la carpeta backend un archivo .env en el cual deberas de poner la configuracion de tu PostgreSQL
+
+PORT=3000
+
+DB_HOST=
+
+DB_PORT=
 
 DB_USER=
+
 DB_PASSWORD=
-DB_HOST=
-DB_PORT=
+
 DB_NAME=
 
 ## Base de datos
-Ejecutar:
+
+Colocar los siguientes archivos que contienen consultas para la creacion de la base de datos en PostgreSQL(pgAdmin4):
+
+-nombre base de datos: devboard
+
+Colocar las siquientes consultas en el Query de la base de datos que se encuentran en:
 
 backend/bd/schema.sql
+
 backend/bd/seed.sql
+
+ejecutar.
 
 ## Dashboard Principal
 
